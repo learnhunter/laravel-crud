@@ -1,0 +1,51 @@
+  <!-- toaster-alert -->
+   <link rel="stylesheet" href="{{ asset('public/backend/assets/vendor_plugins/toaster/toastr.css')}}">
+   <link rel="stylesheet" href="{{ asset('public/backend/assets/vendor_plugins/bootstrap-sweetalert/dist/sweetalert.css')}}">
+
+<!---alertjs file-->
+   <script  src="{{ asset('public/backend/assets/vendor_plugins/toaster/toastr.min.js')}}"></script>
+    <script  src="{{ asset('public/backend/assets/vendor_plugins/bootstrap-sweetalert/dist/sweetalert.min.js')}}"></script>
+
+     <script>
+     @if(Session::has('messege'))
+          var type="{{Session::get('alert-type','info')}}"
+          switch(type){
+              case 'info':
+                   toastr.info("{{ Session::get('messege') }}");
+                   break;
+              case 'success':
+                  toastr.success("{{ Session::get('messege') }}");
+                  break;
+              case 'warning':
+                 toastr.warning("{{ Session::get('messege') }}");
+                  break;
+              case 'error':
+                  toastr.error("{{ Session::get('messege') }}");
+                  break;
+          }
+        @endif
+  </script>
+
+    <script>
+            $(document).on("click", "#delete", function(e){
+                e.preventDefault();
+                 var link = $(this).attr("href");
+                 swal({
+                  title: "Are you sure?",
+                  text: "You will not be able to recover this imaginary file!",
+                  type: "warning",
+                  showCancelButton: true,
+                  confirmButtonClass: "btn-danger",
+                  confirmButtonText: "Yes, delete it!",
+                  cancelButtonText: "No, cancel!",
+                },
+                function(isConfirm) {
+                  if (isConfirm) {
+                    swal("Deleted!", "Your imaginary file has been deleted.", "success");
+                    window.location.href = link;
+                  } else {
+                    swal("Cancelled", "Your imaginary file is safe :)", "error");
+                  }
+                });
+               });
+       </script>
