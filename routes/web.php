@@ -33,3 +33,10 @@ Route::post('/store/district', 'Backend\DistrictController@storeDistrict')->name
 Route::get('/delete/district/{id}', 'Backend\DistrictController@destorydistrict')->name('delete.district');
 Route::get('/edit/district/{id}', 'Backend\DistrictController@editdistrict')->name('edit.district');
 Route::post('/update/district/{id}', 'Backend\DistrictController@updatedistrict')->name('update.district');
+
+//subdistrict
+Route::get('/subdistricts', 'Backend\DistrictController@subdistrict')->name('subdistrict');
+Route::post('/store/subdistricts', 'Backend\DistrictController@storesubdistrict')->name('store.subdistrict');
+Route::get('/delete/subdistrict/{id}', 'Backend\DistrictController@destroysubdistrict')->name('delete.subdistrict');
+Route::get('/edit/subdistrict/{id}', 'Backend\DistrictController@editsubdistrict')->name('edit.subdistrict');
+Route::post('/update/subdistrict/{id}', 'Backend\DistrictController@updatesubdistrict')->name('update.subdistrict');

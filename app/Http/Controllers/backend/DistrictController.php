@@ -73,4 +73,71 @@ class DistrictController extends Controller
             return Redirect()->route('district')->with($notification);
     }
 
+
+    public function subdistrict()
+    {
+    	 $sub=DB::table('subdistricts')->Join('districts','subdistricts.district_id','districts.id')->select('districts.district_bn','subdistricts.*')->get();
+
+
+    	$district=DB::table('districts')->get();
+    	return view('backend.district.subdistricts',compact('sub','district'));
+    }
+
+    public function storesubdistrict(Request $request)
+    {
+    	$validatedData = $request->validate([
+              'subdistrict_en' => 'required|unique:subdistricts|max:55',
+              'subdistrict_bn' => 'required|unique:subdistricts|max:55',
+              'district_id' => 'required',
+           ]);
+
+    	  $data=array();
+    	  $data['subdistrict_en']=$request->subdistrict_en;
+    	  $data['subdistrict_bn']=$request->subdistrict_bn;
+    	  $data['district_id']=$request->district_id;
+    	  DB::table('subdistricts')->insert($data);
+    	     $notification=array(
+                        'messege'=>'Successfully Added',
+                        'alert-type'=>'success'
+                         );
+            return Redirect()->back()->with($notification);
+    }
+
+    public function destroysubdistrict($id)
+    {
+    	 DB::table('subdistricts')->where('id',$id)->delete();
+    	   $notification=array(
+                        'messege'=>'Successfully Deleted',
+                        'alert-type'=>'success'
+                         );
+          return Redirect()->back()->with($notification);
+    }
+
+    public function editsubdistrict($id)
+    {
+    	 $sub= DB::table('subdistricts')->where('id',$id)->first();
+    	$district=DB::table('districts')->get();
+    	return view('backend.district.edit_subdistrict',compact('sub','district'));
+    }
+
+    public function updatesubdistrict(Request $request,$id)
+    {
+    		$validatedData = $request->validate([
+              'subdistrict_en' => 'required',
+              'subdistrict_bn' => 'required',
+              'district_id' => 'required',
+           ]);
+
+    	  $data=array();
+    	  $data['subdistrict_en']=$request->subdistrict_en;
+    	  $data['subdistrict_bn']=$request->subdistrict_bn;
+    	  $data['district_id']=$request->district_id;
+    	  DB::table('subdistricts')->update($data);
+    	     $notification=array(
+                        'messege'=>'Successfully Added',
+                        'alert-type'=>'success'
+                         );
+            return Redirect()->route('subdistrict')->with($notification);
+    }
+
 }
