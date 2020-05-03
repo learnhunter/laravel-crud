@@ -132,7 +132,7 @@ class DistrictController extends Controller
     	  $data['subdistrict_en']=$request->subdistrict_en;
     	  $data['subdistrict_bn']=$request->subdistrict_bn;
     	  $data['district_id']=$request->district_id;
-    	  DB::table('subdistricts')->update($data);
+    	  DB::table('subdistricts')->where('id',$id)->update($data);
     	     $notification=array(
                         'messege'=>'Successfully Added',
                         'alert-type'=>'success'

@@ -80,6 +80,8 @@ class SubcategoryController extends Controller
                         'alert-type'=>'success'
                          );
             return Redirect()->route('subcategories')->with($notification);
+
+        
     }
 
 }

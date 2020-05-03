@@ -9,9 +9,11 @@ Route::get('/', function () {
 });
 
 Auth::routes(['verify' => true]);
-
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/user/logout', 'HomeController@logout')->name('user.logout');
+
+
+
 
 //categories------------
 Route::get('/categories', 'Backend\CategoryController@index')->name('categories');
@@ -40,3 +42,16 @@ Route::post('/store/subdistricts', 'Backend\DistrictController@storesubdistrict'
 Route::get('/delete/subdistrict/{id}', 'Backend\DistrictController@destroysubdistrict')->name('delete.subdistrict');
 Route::get('/edit/subdistrict/{id}', 'Backend\DistrictController@editsubdistrict')->name('edit.subdistrict');
 Route::post('/update/subdistrict/{id}', 'Backend\DistrictController@updatesubdistrict')->name('update.subdistrict');
+
+
+//json data multiple dependency
+Route::get('get/subcat/{cat_id}','Backend\PostController@GetSubcat');
+Route::get('get/subdist/{dist_id}','Backend\PostController@GetSubDist');
+
+//posts routes
+Route::get('/insert/post', 'Backend\PostController@create')->name('insert.post');
+Route::post('/store/post', 'Backend\PostController@store')->name('store.post');
+Route::get('/all/post', 'Backend\PostController@index')->name('all.post');
+Route::get('/delete/post/{id}', 'Backend\PostController@destroy')->name('delete.post');
+Route::get('/edit/post/{id}', 'Backend\PostController@edit')->name('edit.post');
+Route::post('/update/post/{id}', 'Backend\PostController@update')->name('update.post');

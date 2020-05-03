@@ -30,6 +30,8 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('public/template/plugins/toaster/toastr.css')}}">
    <link rel="stylesheet" href="{{ asset('public/template/plugins/bootstrap-sweetalert/dist/sweetalert.css')}}">
+    <!-- summernote -->
+  <link rel="stylesheet" href="{{ asset('public/template/plugins/summernote/summernote-bs4.css')}}">
    
 </head>
 <body >
@@ -46,25 +48,10 @@
          <li class="nav-item">
            <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
          </li>
-         <li class="nav-item d-none d-sm-inline-block">
-           <a href="index3.html" class="nav-link">Home</a>
-         </li>
-         <li class="nav-item d-none d-sm-inline-block">
-           <a href="#" class="nav-link">Contact</a>
-         </li>
+       
        </ul>
 
-       <!-- SEARCH FORM -->
-       <form class="form-inline ml-3">
-         <div class="input-group input-group-sm">
-           <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-           <div class="input-group-append">
-             <button class="btn btn-navbar" type="submit">
-               <i class="fas fa-search"></i>
-             </button>
-           </div>
-         </div>
-       </form>
+     
 
        <!-- Right navbar links -->
        <ul class="navbar-nav ml-auto">
@@ -247,6 +234,30 @@
                </ul>
              </li>
 
+              <li class="nav-item has-treeview">
+               <a href="#" class="nav-link">
+                 <i class="nav-icon fas fa-copy"></i>
+                 <p>
+                 Posts
+                   <i class="fas fa-angle-left right"></i>
+                 </p>
+               </a>
+               <ul class="nav nav-treeview">
+                 <li class="nav-item">
+                   <a href="{{ route('insert.post') }}" class="nav-link">
+                     <i class="far fa-circle nav-icon"></i>
+                     <p>Add Post</p>
+                   </a>
+                 </li>
+                 <li class="nav-item">
+                   <a href="{{ route('all.post') }}" class="nav-link">
+                     <i class="far fa-circle nav-icon"></i>
+                     <p>All Post</p>
+                   </a>
+                 </li>
+               </ul>
+             </li>
+
           
           
              <li class="nav-header">LABELS</li>
@@ -340,6 +351,14 @@
 <script src="{{ asset('public/template/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
 <!-- Summernote -->
 <script src="{{ asset('public/template/plugins/summernote/summernote-bs4.min.js') }}"></script>
+
+<script>
+  $(function () {
+    // Summernote
+    $('.textarea').summernote()
+  })
+</script>
+
 <!-- overlayScrollbars -->
 <script src="{{ asset('public/template/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
 <!-- AdminLTE App -->
