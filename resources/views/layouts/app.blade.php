@@ -258,6 +258,55 @@
                </ul>
              </li>
 
+               <li class="nav-item has-treeview">
+               <a href="#" class="nav-link">
+                 <i class="nav-icon fas fa-copy"></i>
+                 <p>
+                 Settings
+                   <i class="fas fa-angle-left right"></i>
+                 </p>
+               </a>
+               <ul class="nav nav-treeview">
+                 <li class="nav-item">
+                   <a href="{{ route('social.setting') }}" class="nav-link">
+                     <i class="far fa-circle nav-icon"></i>
+                     <p>Social Setting</p>
+                   </a>
+                 </li>
+                 <li class="nav-item">
+                   <a href="{{ route('seo.setting') }}" class="nav-link">
+                     <i class="far fa-circle nav-icon"></i>
+                     <p>SEO Setting</p>
+                   </a>
+                 </li>
+                  <li class="nav-item">
+                   <a href="{{ route('namaz.setting') }}" class="nav-link">
+                     <i class="far fa-circle nav-icon"></i>
+                     <p>Prayer Time</p>
+                   </a>
+                 </li>
+                  <li class="nav-item">
+                   <a href="{{ route('livetv.setting') }}" class="nav-link">
+                     <i class="far fa-circle nav-icon"></i>
+                     <p>LiveTV Setting</p>
+                   </a>
+                 </li>
+                   <li class="nav-item">
+                   <a href="{{ route('notice.setting') }}" class="nav-link">
+                     <i class="far fa-circle nav-icon"></i>
+                     <p>Notice Setting</p>
+                   </a>
+                 </li>
+                 <li class="nav-item">
+                   <a href="{{ route('important.website') }}" class="nav-link">
+                     <i class="far fa-circle nav-icon"></i>
+                     <p>Important Website</p>
+                   </a>
+                 </li>
+               </ul>
+             </li>
+
+
           
           
              <li class="nav-header">LABELS</li>
@@ -268,9 +317,9 @@
                </a>
              </li>
              <li class="nav-item">
-               <a href="#" class="nav-link">
+               <a href="{{ route('password.change') }}" class="nav-link">
                  <i class="nav-icon far fa-circle text-warning"></i>
-                 <p>Warning</p>
+                 <p>Passowrd Change</p>
                </a>
              </li>
              <li class="nav-item">

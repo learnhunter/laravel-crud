@@ -11,6 +11,8 @@ Route::get('/', function () {
 Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/user/logout', 'HomeController@logout')->name('user.logout');
+Route::get('/password/change', 'HomeController@PasswordChange')->name('password.change');
+Route::post('/update/password', 'HomeController@PasswordUpdate')->name('update.password');
 
 
 
@@ -55,3 +57,29 @@ Route::get('/all/post', 'Backend\PostController@index')->name('all.post');
 Route::get('/delete/post/{id}', 'Backend\PostController@destroy')->name('delete.post');
 Route::get('/edit/post/{id}', 'Backend\PostController@edit')->name('edit.post');
 Route::post('/update/post/{id}', 'Backend\PostController@update')->name('update.post');
+
+
+//settings
+   //social setting
+Route::get('/social/setting', 'Backend\SettingController@SocialSetting')->name('social.setting');
+Route::post('/update/social/{id}', 'Backend\SettingController@UpdateSOcial')->name('update.social');
+   //seo setting
+Route::get('/seo/setting', 'Backend\SettingController@SeoSetting')->name('seo.setting');
+Route::post('/update/seo/{id}', 'Backend\SettingController@UpdateSEO')->name('update.seo');
+   //Namaz setting
+Route::get('/namaz/setting', 'Backend\SettingController@NamazSetting')->name('namaz.setting');
+Route::post('/update/namaztime/{id}', 'Backend\SettingController@Updatenamaztime')->name('update.namaztime');
+ //Livetv setting
+Route::get('/livetv/setting', 'Backend\SettingController@LivetvSetting')->name('livetv.setting');
+Route::post('/update/livetv/{id}', 'Backend\SettingController@Updatelivetv')->name('update.livetv');
+Route::get('/active/livetv/{id}', 'Backend\SettingController@ActiveLivetv')->name('active.livetv');
+Route::get('/deactive/livetv/{id}', 'Backend\SettingController@DeactiveLivetv')->name('deactive.livetv');
+   //notice
+ Route::get('/notice/setting', 'Backend\SettingController@noticeSetting')->name('notice.setting');  
+ Route::post('/update/notice/{id}', 'Backend\SettingController@UpdateNotice')->name('update.notice');
+ Route::get('/active/notice/{id}', 'Backend\SettingController@ActiveNotice')->name('active.notice');
+ Route::get('/deactive/notice/{id}', 'Backend\SettingController@DeactiveNotice')->name('deactive.notice');
+
+ //important website
+ Route::get('/important/website', 'Backend\SettingController@importantwebsite')->name('important.website');
+Route::post('/store/website', 'Backend\SettingController@StoreWebsite')->name('store.website');
