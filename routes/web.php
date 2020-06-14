@@ -79,7 +79,12 @@ Route::get('/deactive/livetv/{id}', 'Backend\SettingController@DeactiveLivetv')-
  Route::post('/update/notice/{id}', 'Backend\SettingController@UpdateNotice')->name('update.notice');
  Route::get('/active/notice/{id}', 'Backend\SettingController@ActiveNotice')->name('active.notice');
  Route::get('/deactive/notice/{id}', 'Backend\SettingController@DeactiveNotice')->name('deactive.notice');
-
+//photo gallery
+ Route::get('/photo/gallery', 'Backend\GalleryController@photos')->name('photos.gallery');  
+ Route::post('/store/phto/gallery', 'Backend\GalleryController@storephotos')->name('store.photos');  
+ //video gallery
+ Route::get('/video/gallery', 'Backend\GalleryController@video')->name('video.gallery');  
+Route::post('/store/video/gallery', 'Backend\GalleryController@storevideo')->name('store.videos');  
  //important website
  Route::get('/important/website', 'Backend\SettingController@importantwebsite')->name('important.website');
 Route::post('/store/website', 'Backend\SettingController@StoreWebsite')->name('store.website');
