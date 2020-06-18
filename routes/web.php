@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    return redirect()->route('login');
+    return view('frontend.index');
 });
 
 Auth::routes(['verify' => true]);
@@ -88,3 +88,9 @@ Route::post('/store/video/gallery', 'Backend\GalleryController@storevideo')->nam
  //important website
  Route::get('/important/website', 'Backend\SettingController@importantwebsite')->name('important.website');
 Route::post('/store/website', 'Backend\SettingController@StoreWebsite')->name('store.website');
+
+
+//frontend
+   //language
+Route::get('/lang/english', 'Frontend\ExtraController@English')->name('lang.english');  
+Route::get('/lang/bangla', 'Frontend\ExtraController@Bangla')->name('lang.bangla');  
