@@ -49,7 +49,6 @@ class PostController extends Controller
      {
            $validatedData = $request->validate([
                 'cat_id' => 'required',
-                'dist_id' => 'required',
         ]);
 
            $data=array();

@@ -175,6 +175,7 @@ class SettingController extends Controller
     {
     	 $data=array();
           $data['website_name']=$request->website_name;       
+          $data['website_name_en']=$request->website_name_en;       
           $data['website_link']=$request->website_link;     
           DB::table('websites')->insert($data);
           $notification=array(

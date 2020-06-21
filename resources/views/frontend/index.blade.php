@@ -132,15 +132,25 @@
 							<div class="sidebar-add"><img src="{{ asset('public/frontend/assets/img/add_01.jpg') }}" alt="" /></div>
 						</div>
 					</div><!-- /.add-close -->	
-					
+					@php
+					$tv=DB::table('livetv')->first();
+					@endphp
+					@if($tv->status==1)
 					<!-- youtube-live-start -->	
-					<div class="cetagory-title-03">লাইভ টিভি </div>
+					<div class="cetagory-title-03">
+						  @if(session()->get('lang') == 'english')
+				             Live TV
+				          @else
+				             লাইভ টিভি
+				          @endif
+					
+					 </div>
 					<div class="photo">
 						<div class="embed-responsive embed-responsive-16by9 embed-responsive-item" style="margin-bottom:5px;">
-							<iframe width="729" height="410" src="https://www.youtube.com/embed/8HnnNf-3VuE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+							{!! $tv->embed_code !!}
 						</div>
 					</div><!-- /.youtube-live-close -->	
-					
+					@endif
 					<!-- facebook-page-start -->
 					<div class="cetagory-title-03">ফেসবুকে আমরা</div>
 					<div class="fb-root">
@@ -468,9 +478,79 @@
 							</div>
 						</div>
 					</div>
+					@php
+					$prayer=DB::table('namaz')->first();
+					@endphp
 					<!-- Namaj Times -->
-					<div class="cetagory-title-03">নামাজের সময়সূচি </div>
-					Namaj Times count option here
+					<div class="cetagory-title-03">
+						@if(session()->get('lang')== 'english')
+							   Prayer times
+							@else
+							  নামাজের সময়সূচি 
+							  @endif
+							</div>
+					<table class="table">
+						<tr>
+							<th>
+							@if(session()->get('lang')== 'english')
+							  Fajr
+							@else
+							  ফজর 
+							  @endif
+							</th>
+							<th>{{ $prayer->fajr }}</th>
+						</tr>
+						<tr>
+							<th>
+							@if(session()->get('lang')== 'english')
+							  Johr
+							@else
+							  যোহর 
+							  @endif
+							</th>
+							<th>{{ $prayer->johr }}</th>
+						</tr>
+						<tr>
+							<th>
+							@if(session()->get('lang')== 'english')
+							  Asor
+							@else
+							  আছর 
+							  @endif
+							</th>
+							<th>{{ $prayer->asor }}</th>
+						</tr>
+						<tr>
+							<th>
+							@if(session()->get('lang')== 'english')
+							  Magrib
+							@else
+							  মাগরিব  
+							  @endif
+							</th>
+							<th>{{ $prayer->magrib }}</th>
+						</tr>
+						<tr>
+							<th>
+							@if(session()->get('lang')== 'english')
+							  Esha
+							@else
+							  এশা 
+							  @endif
+							</th>
+							<th>{{ $prayer->esha }}</th>
+						</tr>
+						<tr>
+							<th>
+							@if(session()->get('lang')== 'english')
+							  Jummah
+							@else
+							  জুম্মা 
+							  @endif
+							</th>
+							<th>{{ $prayer->jummah }}</th>
+						</tr>
+					</table>
 					<!-- Namaj Times -->
 					<div class="cetagory-title-03">পুরানো সংবাদ  </div>
 					<form action="" method="post">
@@ -482,34 +562,31 @@
 							<input type="submit" value="খুজুন ">
 						</div>
 				   </form>
+
 				   <!-- news -->
 				   <br><br><br><br><br>
-				   <div class="cetagory-title-04"> গুরুত্বপূর্ণ ওয়েবসাইট </div>
+				   <div class="cetagory-title-04"> 
+				  @if(session()->get('lang') == 'english')
+				   Important Website
+				@else
+				   গুরুত্বপূর্ণ ওয়েবসাইট 
+				 @endif 
+				 @php
+				 	$website=DB::table('websites')->get();
+				 @endphp
+				   </div>
 				   <div class="">
+				   	@foreach($website as $row)
 				   	<div class="news-title-02">
-				   		<h4 class="heading-03"><a href="#"><i class="fa fa-check" aria-hidden="true"></i> লালমনিরহাটে আওয়ামী লীগ  </a> </h4>
+				   		<h4 class="heading-03"><a href="{{ $row->website_link}}" target="_blank"><i class="fa fa-check" aria-hidden="true"></i>
+				   		  @if(session()->get('lang') == 'english')
+				             {{ $row->website_name_en }}
+				          @else
+				             {{ $row->website_name }}
+				          @endif  </a>
+				   		  </h4>
 				   	</div>
-				   	<div class="news-title-02">
-				   		<h4 class="heading-03"><a href="#"><i class="fa fa-check" aria-hidden="true"></i> লালমনিরহাটে আওয়ামী লীগ  </a> </h4>
-				   	</div>
-				   	<div class="news-title-02">
-				   		<h4 class="heading-03"><a href="#"><i class="fa fa-check" aria-hidden="true"></i> লালমনিরহাটে আওয়ামী লীগ  </a> </h4>
-				   	</div>
-				   	<div class="news-title-02">
-				   		<h4 class="heading-03"><a href="#"><i class="fa fa-check" aria-hidden="true"></i> লালমনিরহাটে আওয়ামী লীগ  </a> </h4>
-				   	</div>
-				   	<div class="news-title-02">
-				   		<h4 class="heading-03"><a href="#"><i class="fa fa-check" aria-hidden="true"></i> লালমনিরহাটে আওয়ামী লীগ  </a> </h4>
-				   	</div>
-				   	<div class="news-title-02">
-				   		<h4 class="heading-03"><a href="#"><i class="fa fa-check" aria-hidden="true"></i> লালমনিরহাটে আওয়ামী লীগ  </a> </h4>
-				   	</div>
-				   	<div class="news-title-02">
-				   		<h4 class="heading-03"><a href="#"><i class="fa fa-check" aria-hidden="true"></i> লালমনিরহাটে আওয়ামী লীগ  </a> </h4>
-				   	</div>
-				   	<div class="news-title-02">
-				   		<h4 class="heading-03"><a href="#"><i class="fa fa-check" aria-hidden="true"></i> লালমনিরহাটে আওয়ামী লীগ  </a> </h4>
-				   	</div>
+				   	@endforeach
 				   </div>
 
 				</div>
