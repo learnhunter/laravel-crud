@@ -130,17 +130,17 @@
                     <label class="form-check-label" for="exampleCheck1">Headline</label>
                		</div>
                   <div class="form-check col-md-6">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1" name="bigthumbnail" value="1" >
-                    <label class="form-check-label" for="exampleCheck1">General big thumbnail</label>
+                    <input type="checkbox" class="form-check-input" id="exampleCheck2" name="bigthumbnail" value="1" >
+                    <label class="form-check-label" for="exampleCheck2">General big thumbnail</label>
                   </div>
 
                    <div class="form-check col-md-6">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1" name="first_section" value="1" >
-                    <label class="form-check-label" for="exampleCheck1">FirstSection</label>
+                    <input type="checkbox" class="form-check-input" id="exampleCheck3" name="first_section" value="1" >
+                    <label class="form-check-label" for="exampleCheck3">FirstSection</label>
                   </div>
                   <div class="form-check col-md-6">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1" name="first_section_thumbnail" value="1" >
-                    <label class="form-check-label" for="exampleCheck1">FirstSection Big Thumbnail</label>
+                    <input type="checkbox" class="form-check-input" id="exampleCheck4" name="first_section_thumbnail" value="1" >
+                    <label class="form-check-label" for="exampleCheck4">FirstSection Big Thumbnail</label>
                   </div>
                
             </div>
