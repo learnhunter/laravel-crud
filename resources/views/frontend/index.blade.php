@@ -12,12 +12,14 @@
 				<div class="col-md-9 col-sm-8">
 					<div class="row">
 						<div class="col-md-1 col-sm-1 col-lg-1"></div>
-
+							@php
+								$slug=preg_replace('/\s+/u', '-', trim($firstsectionbig->title_bn));
+							@endphp
 						<div class="col-md-10 col-sm-10">
 							<div class="lead-news">
-								<div class="service-img"><a href="#"><img src="{{ asset($firstsectionbig->image) }}" alt="Notebook"></a></div>
+								<div class="service-img"><a href="{{ URL::to('view-post/'.$firstsectionbig->id.'/'.$slug) }}"><img src="{{ asset($firstsectionbig->image) }}" alt="Notebook"></a></div>
 								<div class="content">
-								<h4 class="lead-heading-01"><a href="#">
+							<h4 class="lead-heading-01"><a href="{{ URL::to('view-post/'.$firstsectionbig->id.'/'.$slug) }}">
 								@if(session()->get('lang') == 'english')
 								   {{ $firstsectionbig->title_en }} 
 								@else
@@ -31,11 +33,14 @@
 					</div>
 						<div class="row">
 							@foreach($firstsectionsmall as $row)
+							@php
+								$slug=preg_replace('/\s+/u', '-', trim($row->title_bn));
+							@endphp
 								<div class="col-md-3 col-sm-3" >
 									<div class="top-news">
-										<a href="#"><img src="{{ asset($row->image)}}" alt="Notebook"></a>
+										<a href="{{ URL::to('view-post/'.$row->id.'/'.$slug) }}"><img src="{{ asset($row->image)}}" alt="Notebook"></a>
 										<h4 class="heading-02" style="height: 80px;">
-											<a href="#">
+											<a href="{{ URL::to('view-post/'.$row->id.'/'.$slug) }}">
 											@if(session()->get('lang') == 'english')
 											   {{ $row->title_en }} 
 											@else

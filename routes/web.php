@@ -94,3 +94,5 @@ Route::post('/store/website', 'Backend\SettingController@StoreWebsite')->name('s
    //language
 Route::get('/lang/english', 'Frontend\ExtraController@English')->name('lang.english');  
 Route::get('/lang/bangla', 'Frontend\ExtraController@Bangla')->name('lang.bangla');  
+//single post
+ROute::get('view-post/{id}/{slug}','Frontend\ExtraController@SinglePost');

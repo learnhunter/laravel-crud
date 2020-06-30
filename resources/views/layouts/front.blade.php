@@ -16,6 +16,8 @@
         <meta name="keyword" content="{{ $seo->meta_keyword }}">
         <meta name="description" content="{{ $seo->meta_description }}">
         <meta name="google-verification" content="{{ $seo->google_verification }}">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        @yield('meta')
      
         <title>{{ $seo->meta_title }}</title>
 

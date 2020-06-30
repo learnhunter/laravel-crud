@@ -53,8 +53,9 @@ class PostController extends Controller
 
            $data=array();
            $data['title_bn']=$request->title_bn;
+           // $data['title_slug']=Str::slug($request->title_bn, '-');
            $data['title_en']=$request->title_en;
-          $data['user_id']= Auth::id();
+           $data['user_id']= Auth::id();
            $data['cat_id']=$request->cat_id;
            $data['subcat_id']=$request->subcat_id;
            $data['dist_id']=$request->dist_id;
