@@ -36,5 +36,33 @@ class ExtraController extends Controller
            return view('frontend.singlepost',compact('post'));  
     }
 
+    public function AllPost($id,$subcategory_bn)
+    {
+        $posts=DB::table('posts')->where('subcat_id',$id)->orderBy('id','DESC')->paginate(15);
+        return view('frontend.allposts',compact('posts'));
+    }
+
+    public function AllPostscat($id ,$category_bn)
+    {
+        $posts=DB::table('posts')->where('cat_id',$id)->orderBy('id','DESC')->paginate(15);
+        return view('frontend.allposts',compact('posts'));
+    }
+
+       //json data return 
+      public function GetSubDist($dist_id)
+     {
+           $sub=DB::table('subdistricts')->where('district_id',$dist_id)->get();
+          return response()->json($sub);
+     }
+
+     public function Saradesh(Request $request)
+     {
+         $distid=$request->dist_id;
+         $subdistid=$request->subdist_id;
+
+       $posts=DB::table('posts')->where('dist_id',$distid)->where('subdist_id',$subdistid)->orderBy('id','DESC')->paginate(15);
+        return view('frontend.allposts',compact('posts'));
+     }
+
 
 }

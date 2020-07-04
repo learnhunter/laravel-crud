@@ -3,7 +3,6 @@
 @php
 	 $firstsectionbig=DB::table('posts')->where('first_section_thumbnail',1)->orderBy('id','DESC')->first();
 	 $firstsectionsmall=DB::table('posts')->where('first_section',1)->orderBy('id','DESC')->limit(8)->get();
-
 @endphp
 	<!-- 1st-news-section-start -->	
 	<section class="news-section">
@@ -54,8 +53,18 @@
 					
 					<!-- add-start -->	
 					<div class="row">
+						@php
+						  $horizontal2=DB::table('ads')->where('type',2)->skip(1)->first();
+						@endphp
 						<div class="col-md-12 col-sm-12">
-							<div class="add"><img src="{{ asset('public/frontend/assets/img/top-ad.jpg') }}" alt="" /></div>
+							<div class="add">
+								@if($horizontal2==NULL)
+								@else
+									 <a href="{{ $horizontal2->link }}" target="_blank">	
+									 	<img src="{{ asset($horizontal2->ads) }}" alt="" />
+									 </a>
+								@endif
+							</div>
 						</div>
 					</div><!-- /.add-close -->	
 					
@@ -74,7 +83,7 @@
 								@else
 								  {{ $firstcat->category_bn }} 
 								 @endif
-								 <a href="#">
+								 <a href="{{ URL::to('post/'.$firstcat->id.'/'.$firstcat->category_bn)}}">
 								  <span>
 								 @if(session()->get('lang') == 'english')
 								   More
@@ -128,7 +137,7 @@
 								@else
 								  {{ $secondcat->category_bn }} 
 								 @endif
-								 <a href="#">
+								 <a href="{{ URL::to('post/'.$secondcat->id.'/'.$secondcat->category_bn)}}">
 								  <span>
 								 @if(session()->get('lang') == 'english')
 								   More
@@ -171,7 +180,12 @@
 					<!-- add-start -->	
 					<div class="row">
 						<div class="col-md-12 col-sm-12">
-							<div class="sidebar-add"><img src="{{ asset('public/frontend/assets/img/add_01.jpg') }}" alt="" /></div>
+						@php
+						  $vertical1=DB::table('ads')->where('type',1)->first();
+						@endphp
+							<div class="sidebar-add">
+								<a href="{{ $vertical1->link }}" target="_blank"><img src="{{ asset($vertical1->ads) }}" alt="" /></a>
+							</div>
 						</div>
 					</div><!-- /.add-close -->	
 					@php
@@ -194,16 +208,28 @@
 					</div><!-- /.youtube-live-close -->	
 					@endif
 					<!-- facebook-page-start -->
-					<div class="cetagory-title-03">ফেসবুকে আমরা</div>
-					<div class="fb-root">
-						facebook page here
-					</div><!-- /.facebook-page-close -->	
+					<div class="cetagory-title-03">
+						  @if(session()->get('lang') == 'english')
+				             Our Facebook
+				          @else
+				            ফেসবুকে আমরা
+				          @endif
+					  
+				   </div>
+					  <div class="fb-root">
+                            <div class="fb-page" data-href="https://www.facebook.com/ehtirambd" data-tabs="" data-width="" data-height="" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="" class="fb-xfbml-parse-ignore"><a href="">Ehtirambd</a></blockquote></div>
+                              <div id="fb-root"></div>
+                               <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v7.0&appId=251302696084561&autoLogAppEvents=1"></script>
+                        </div>
 					
 					<!-- add-start -->	
-					<div class="row">
+						<div class="row">
 						<div class="col-md-12 col-sm-12">
+						@php
+						  $vertical2=DB::table('ads')->where('type',1)->skip(1)->first();
+						@endphp
 							<div class="sidebar-add">
-								<img src="{{ asset('public/frontend/assets/img/add_01.jpg') }}" alt="" />
+								<a href="{{ $vertical2->link }}" target="_blank"><img src="{{ asset($vertical2->ads) }}" alt="" /></a>
 							</div>
 						</div>
 					</div><!-- /.add-close -->	
@@ -230,7 +256,7 @@
 								@else
 								  {{ $thirdcat->category_bn }} 
 								 @endif
-								 <a href="#">
+								 <a href="{{ URL::to('post/'.$thirdcat->id.'/'.$thirdcat->category_bn)}}">
 								  <span>
 								 @if(session()->get('lang') == 'english')
 								   More
@@ -284,7 +310,7 @@
 							@else
 							  {{ $fourthcat->category_bn }} 
 							 @endif
-							 <a href="#">
+							 <a href="{{ URL::to('post/'.$fourthcat->id.'/'.$fourthcat->category_bn)}}">
 							  <span>
 							 @if(session()->get('lang') == 'english')
 							   More
@@ -339,7 +365,7 @@
 								@else
 								  {{ $fifthcat->category_bn }} 
 								 @endif
-								 <a href="#">
+								 <a href="{{ URL::to('post/'.$fifthcat->id.'/'.$fifthcat->category_bn)}}">
 								  <span>
 								 @if(session()->get('lang') == 'english')
 								   More
@@ -393,7 +419,7 @@
 							@else
 							  {{ $sixcat->category_bn }} 
 							 @endif
-							 <a href="#">
+							 <a href="{{ URL::to('post/'.$sixcat->id.'/'.$sixcat->category_bn)}}">
 							  <span>
 							 @if(session()->get('lang') == 'english')
 							   More
@@ -433,13 +459,19 @@
 				</div>
 			</div>
 
+@php
+  $horizontal3=DB::table('ads')->where('type',2)->skip(2)->first();
+  $horizontal4=DB::table('ads')->where('type',2)->skip(3)->first();
+@endphp
 			<!-- add-start -->	
 			<div class="row">
 				<div class="col-md-6 col-sm-6">
-					<div class="add"><img src="{{ asset('public/frontend/assets/img/top-ad.jpg') }}" alt="" /></div>
+					<div class="add">
+						<a href="{{ $horizontal3->link }}" target="_blank"> <img src="{{ asset($horizontal3->ads) }}" alt="" /> </a>
+					</div>
 				</div>
 				<div class="col-md-6 col-sm-6">
-					<div class="add"><img src="{{ asset('public/frontend/assets/img/top-ad.jpg') }}" alt="" /></div>
+				<a href="{{ $horizontal4->link }}" target="_blank"> <img src="{{ asset($horizontal4->ads) }}" alt="" /> </a>
 				</div>
 			</div><!-- /.add-close -->	
 			
@@ -471,17 +503,28 @@
 						</div>
 					
 					<div class="row">
-
-							<form action="" method="post">
+						@php
+							$dis=DB::table('districts')->get();
+						@endphp
+						<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+							<form action="{{ route('saradesh.news') }}" method="get">
+								@csrf
 								<div class="row">
 									<div class="col-lg-4">
-										<input type="" class="form-control" name="">
+										<select class="form-control" name="dist_id" id="dist_id" required>
+												<option selected="">==choose one==</option>
+												@foreach($dis as $row)
+												<option value="{{ $row->id }}">{{ $row->district_bn }}</option>
+												@endforeach
+										</select>
 									</div>
 										<div class="col-lg-4">
-										<input type="" class="form-control" name="">
+										<select class="form-control" name="subdist_id" id="subdist_id" required>
+												<option selected="">==choose one==</option>
+										</select>
 									</div>
 										<div class="col-lg-4">
-										<button class="btn btn-success btn-block"> খুজুন</button>
+										<button class="btn btn-success btn-block" type="submit"> খুজুন</button>
 									</div>
 								</div>
 						   </form>
@@ -545,7 +588,7 @@
 								@else
 								  {{ $sevencat->category_bn }} 
 								 @endif
-								 <a href="#">
+								 <a href="{{ URL::to('post/'.$sevencat->id.'/'.$sevencat->category_bn)}}">
 								  <span>
 								 @if(session()->get('lang') == 'english')
 								   More
@@ -599,7 +642,7 @@
 								@else
 								  {{ $eightcat->category_bn }} 
 								 @endif
-								 <a href="#">
+								 <a href="{{ URL::to('post/'.$eightcat->id.'/'.$eightcat->category_bn)}}">
 								  <span>
 								 @if(session()->get('lang') == 'english')
 								   More
@@ -638,10 +681,13 @@
 						</div>
 					</div>
 					
+@php
+  $horizontal5=DB::table('ads')->where('type',2)->skip(4)->first();
+@endphp
 					<div class="row">
 						<div class="col-md-12 col-sm-12">
 							<div class="sidebar-add">
-								<img src="{{ asset('public/frontend/assets/img/top-ad.jpg') }}" alt="" />
+							<a href="{{ $horizontal5->link }}"> <img src="{{ asset($horizontal5->ads) }}" alt="" /> </a>	
 							</div>
 						</div>
 					</div><!-- /.add-close -->	
@@ -682,8 +728,11 @@
 							<div role="tabpanel" class="tab-pane in active" id="tab21">
 								<div class="news-titletab">
 									@foreach($latest as $row)
+										@php
+											$slug=preg_replace('/\s+/u', '-', trim($row->title_bn));
+										@endphp
 									    <div class="news-title-02">
-										    <h4 class="heading-03"><a href="#">
+										    <h4 class="heading-03"><a href="{{ URL::to('view-post/'.$row->id.'/'.$slug) }}">
 										    		@if(session()->get('lang') == 'english')
 							          					{{ $row->title_en }}
 												    @else
@@ -697,8 +746,11 @@
 							<div role="tabpanel" class="tab-pane fade" id="tab22">
 								<div class="news-titletab">
 								  @foreach($favourite as $row)
+								  @php
+											$slug=preg_replace('/\s+/u', '-', trim($row->title_bn));
+										@endphp
 									    <div class="news-title-02">
-										    <h4 class="heading-03"><a href="#">
+										    <h4 class="heading-03"><a href="{{ URL::to('view-post/'.$row->id.'/'.$slug) }}">
 										    		@if(session()->get('lang') == 'english')
 							          					{{ $row->title_en }}
 												    @else
@@ -713,8 +765,11 @@
 							<div role="tabpanel" class="tab-pane fade" id="tab23">	
 								<div class="news-titletab">
 									 @foreach($highest as $row)
+									 @php
+											$slug=preg_replace('/\s+/u', '-', trim($row->title_bn));
+										@endphp
 									    <div class="news-title-02">
-										    <h4 class="heading-03"><a href="#">
+										    <h4 class="heading-03"><a href="{{ URL::to('view-post/'.$row->id.'/'.$slug) }}">
 										    		@if(session()->get('lang') == 'english')
 							          					{{ $row->title_en }}
 												    @else
@@ -997,7 +1052,32 @@
 		</div>
 	</section><!-- /.gallery-section-close -->
 
+<script type="text/javascript">
+   $(document).ready(function() {
+         $('select[name="dist_id"]').on('change', function(){
+             var dist_id = $(this).val();
+             if(dist_id) {
+                 $.ajax({
+                     url: "{{  url('/get/subdist/frontend/') }}/"+dist_id,
+                     type:"GET",
+                     dataType:"json",
+                     success:function(data) {
+                        $("#subdist_id").empty();
+                              $.each(data,function(key,value){
+                                  $("#subdist_id").append('<option value="'+value.id+'">'+value.subdistrict_bn+'</option>');
+                              });
 
+                     },
+                    
+                 });
+             } else {
+                 alert('danger');
+             }
+
+         });
+     });
+
+</script>
 	
 	
 @endsection

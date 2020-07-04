@@ -1,11 +1,5 @@
 @extends('layouts.front')
-@section('meta')
-  <meta property="og:url" content="{{Request::fullUrl()}}" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="{{ $post->title_bn }}" />
-  <meta property="og:description" content="{{ $post->details_bn }}" />
-  <meta property="og:image" content="{{URL::to($post->image)}}" />
-@endsection
+
 @section('content')
 	<section class="single-page">
 		<div class="container-fluid">
@@ -15,104 +9,20 @@
 					   <li><a href="{{ URL::to('/') }}"><i class="fa fa-home"></i></a></li>					   
 						<li><a href="#">
 						@if(session()->get('lang') == 'english')
-							  {{ $post->category_en }}
+							 All News
 					    @else
-							 {{ $post->category_bn }}
+							 সকল খবর 
 						@endif
-											 </a></li>
-						<li><a href="#">
-						@if(session()->get('lang') == 'english')
-							{{ $post->subcategory_en }}
-						@else
-							{{ $post->subcategory_bn }}
-						@endif</a></li>
+					</a></li>
+						
 					</ol>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-md-12 col-sm-12"> 											
-					<header class="headline-header margin-bottom-10">
-						<h1 class="headline">
-							@if(session()->get('lang') == 'english')
-								{{ $post->title_en }}
-							@else
-								{{ $post->title_bn }}
-							@endif
-						</h1>
-					</header>
-		 
-		 
-				 <div class="article-info margin-bottom-20">
-				  <div class="row">
-						<div class="col-md-6 col-sm-6"> 
-						 <ul class="list-inline">
-						 
-						 
-						 <li>{{ $post->name }} </li>     <li><i class="fa fa-clock-o"></i> {{ $post->post_date }}</li>
-						 </ul>
-						
-						</div>
-						<div class="col-md-6 col-sm-6 pull-right"> 						
-							<ul class="social-nav">
-								
-							</ul>						   
-						</div>						
-					</div>				 
-				 </div>				
-			</div>
-		  </div>
-		  <!-- ******** -->
- @php
-  $horizontal6=DB::table('ads')->where('type',2)->skip(5)->first();
-@endphp
-					<div class="row">
-						<div class="col-md-12 col-sm-12">
-							<div class="sidebar-add">
-							<a href="{{ $horizontal6->link }}"> <img src="{{ asset($horizontal6->ads) }}" alt="" /> </a>	
-							</div>
-						</div>
-					</div><!-- /.add-close -->	
+		
 		  <div class="row">
 			<div class="col-md-8 col-sm-8">
-				<div class="single-news">
-					<img src="{{ asset($post->image) }}" alt="{{ $post->title_bn }}" />
-					<h4 class="caption">@if(session()->get('lang') == 'english')
-								{{ $post->title_en }}
-							@else
-								{{ $post->title_bn }}
-							@endif</h4><br>
-							 <div class="sharethis-inline-share-buttons" data-href="{{ Request::url() }}"></div>
-							 <br>
-					<p>
-						@if(session()->get('lang') == 'english')
-								{!! $post->details_en !!}
-							@else
-								{!! $post->details_bn !!}
-							@endif
-					</p>
-				</div>
-		<div class="comment-section " style="width: 100%;"> 
-           <!-- Begin .title-style01 -->
-           <div class=" comment-title title-style01 ">
-             <h4> Comments</h4>
-           </div>
-           <!-- End .title-style01 -->
-           <div class="fb-comments" data-href="{{ Request::url() }}" data-numposts="5">
-           </div>
-         </div><hr>
-
-				@php
-				   $more=DB::table('posts')->where('cat_id',$post->cat_id)->orderBy('id','DESC')->limit(6)->get();
-				@endphp
-				<br>
 				<div class="row">
-					<div class="col-md-12"><h2 class="heading">	
-				   @if(session()->get('lang') == 'english')
-					    More News
-					@else
-					    আরো সংবাদ
-					@endif</h2></div><hr>
-					@foreach( $more as $row)	
+					@foreach($posts as $row)
 					@php
 						$slug=preg_replace('/\s+/u', '-', trim($row->title_bn));
 					@endphp
@@ -130,18 +40,13 @@
 						</div>
 					@endforeach
 				</div>
+				{{ $posts->links() }}
 			</div>
 			<div class="col-md-4 col-sm-4">
-				@php
-						  $vertical3=DB::table('ads')->where('type',1)->skip(2)->first();
-						  $vertical4=DB::table('ads')->where('type',1)->skip(3)->first();
-				@endphp
 				<!-- add-start -->	
 					<div class="row">
 						<div class="col-md-12 col-sm-12">
-							<div class="sidebar-add">
-								<a href="{{ $vertical3->link }}" target="_blank"><img src="{{ asset($vertical3->ads) }}" alt="" /></a>
-							</div>
+							<div class="sidebar-add"><img src="{{ asset('public/frontend/assets/img/add_01.jpg') }}" alt="" /></div>
 						</div>
 					</div><!-- /.add-close -->
 					@php
@@ -225,9 +130,7 @@
 				<!-- add-start -->	
 					<div class="row">
 						<div class="col-md-12 col-sm-12">
-							<div class="sidebar-add">
-								<a href="{{ $vertical4->link }}" target="_blank"><img src="{{ asset($vertical4->ads) }}" alt="" /></a>
-							</div>
+							<div class="sidebar-add"><img src="{{ asset('public/frontend/assets/img/add_01.jpg') }}" alt="" /></div>
 						</div>
 					</div><!-- /.add-close -->
 			</div>
