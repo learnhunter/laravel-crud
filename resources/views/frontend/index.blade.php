@@ -905,9 +905,9 @@
 				<div class="col-md-8 col-sm-7">
 					<div class="gallery_cetagory-title"> 
 					@if(session()->get('lang') == 'english')
-						     ফটো গ্যালারি 
+						      Photo Gallery
 					@else
-							Photo Gallery
+							ফটো গ্যালারি
 					@endif
 				</div>
 				@php
@@ -979,10 +979,12 @@
 
 				</div>
 				<div class="col-md-4 col-sm-5">
-					<div class="gallery_cetagory-title"> 	@if(session()->get('lang') == 'english')
-						     ভিডিও  গ্যালারি 
+					<div class="gallery_cetagory-title"> 	
+						@if(session()->get('lang') == 'english')
+						    Video Gallery
+						    
 					@else
-							Video Gallery
+							 ভিডিও  গ্যালারি 
 					@endif </div>
             @php
 				$videobig=DB::table('videos')->where('type',1)->orderBy('id','DESC')->first();

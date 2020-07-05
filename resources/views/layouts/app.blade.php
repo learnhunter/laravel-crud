@@ -186,6 +186,7 @@
              </li>
         
 
+             @if(Auth::user()->category==1)
              <li class="nav-item has-treeview">
                <a href="#" class="nav-link">
                  <i class="nav-icon fas fa-copy"></i>
@@ -209,7 +210,9 @@
                  </li>
                </ul>
              </li>
+             @endif
 
+             @if(Auth::user()->district ==1)
               <li class="nav-item has-treeview">
                <a href="#" class="nav-link">
                  <i class="nav-icon fas fa-copy"></i>
@@ -233,7 +236,9 @@
                  </li>
                </ul>
              </li>
+             @endif
 
+             @if(Auth::user()->post==1)
               <li class="nav-item has-treeview">
                <a href="#" class="nav-link">
                  <i class="nav-icon fas fa-copy"></i>
@@ -257,7 +262,9 @@
                  </li>
                </ul>
              </li>
+             @endif
 
+             @if(Auth::user()->setting==1)
                <li class="nav-item has-treeview">
                <a href="#" class="nav-link">
                  <i class="nav-icon fas fa-copy"></i>
@@ -303,9 +310,17 @@
                      <p>Important Website</p>
                    </a>
                  </li>
+                 <li class="nav-item">
+                   <a href="{{ route('website.setting') }}" class="nav-link">
+                     <i class="far fa-circle nav-icon"></i>
+                     <p>Website Setting</p>
+                   </a>
+                 </li>
                </ul>
              </li>
+             @endif
 
+             @if(Auth::user()->gallery ==1)
                <li class="nav-item has-treeview">
                <a href="#" class="nav-link">
                  <i class="nav-icon fas fa-copy"></i>
@@ -329,6 +344,9 @@
                  </li>
                </ul>
              </li>
+             @endif
+
+             @if(Auth::user()->ads==1)
               <li class="nav-item has-treeview">
                <a href="#" class="nav-link">
                  <i class="nav-icon fas fa-copy"></i>
@@ -346,6 +364,33 @@
                  </li>
                </ul>
              </li>
+             @endif
+
+             @if(Auth::user()->role ==1)
+              <li class="nav-item has-treeview">
+               <a href="#" class="nav-link">
+                 <i class="nav-icon fas fa-copy"></i>
+                 <p>
+                 User Role
+                   <i class="fas fa-angle-left right"></i>
+                 </p>
+               </a>
+               <ul class="nav nav-treeview">
+                 <li class="nav-item">
+                   <a href="{{ route('insert.writer') }}" class="nav-link">
+                     <i class="far fa-circle nav-icon"></i>
+                     <p>Add Writer</p>
+                   </a>
+                 </li>
+                 <li class="nav-item">
+                   <a href="{{ route('all.writer') }}" class="nav-link">
+                     <i class="far fa-circle nav-icon"></i>
+                     <p>All Writer</p>
+                   </a>
+                 </li>
+               </ul>
+             </li>
+             @endif
 
 
           

@@ -45,6 +45,12 @@ Route::get('/delete/subdistrict/{id}', 'Backend\DistrictController@destroysubdis
 Route::get('/edit/subdistrict/{id}', 'Backend\DistrictController@editsubdistrict')->name('edit.subdistrict');
 Route::post('/update/subdistrict/{id}', 'Backend\DistrictController@updatesubdistrict')->name('update.subdistrict');
 
+//user role
+Route::get('/insert/writer', 'HomeController@Insert')->name('insert.writer');
+Route::post('/store/writer', 'HomeController@store')->name('store.writer');
+Route::get('/all/writer', 'HomeController@allWriter')->name('all.writer');
+Route::get('/edit/writer/{id}', 'HomeController@edit');
+Route::post('/update/writer/{id}', 'HomeController@UpdateWriter')->name('update.writer');
 
 //json data multiple dependency
 Route::get('get/subcat/{cat_id}','Backend\PostController@GetSubcat');
@@ -91,7 +97,9 @@ Route::post('/store/video/gallery', 'Backend\GalleryController@storevideo')->nam
  //important website
  Route::get('/important/website', 'Backend\SettingController@importantwebsite')->name('important.website');
 Route::post('/store/website', 'Backend\SettingController@StoreWebsite')->name('store.website');
-
+ //website setting
+Route::get('/website/setting', 'Backend\SettingController@WebsiteSetting')->name('website.setting');
+Route::post('/update/websitesetting/{id}', 'Backend\SettingController@UpdateWebsite')->name('update.websitesetting');
 
 //frontend
    //language

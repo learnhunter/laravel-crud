@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB;
+use Image;
 
 class SettingController extends Controller
 {
@@ -183,6 +184,43 @@ class SettingController extends Controller
                         'alert-type'=>'success'
                          );
          return Redirect()->back()->with($notification);
+    }
+
+
+    public function WebsiteSetting()
+    {
+       $setting=DB::table('settings')->first();
+       return view('backend.setting.website_setting',compact('setting'));
+    }
+
+    public function UpdateWebsite(Request $request,$id)
+    {
+           $data=array();
+           $data['phone_bn']=$request->phone_bn;
+           $data['phone_en']=$request->phone_en;
+           $data['email']=$request->email;
+           $data['address_bn']=$request->address_bn;
+           $data['address_en']=$request->address_en;
+           $image=$request->logo;
+           if ($image) {
+                $image_one= uniqid().'.'.$image->getClientOriginalExtension();    //123123.jpg
+                Image::make($image)->resize(320,130)->save('public/ads/'.$image_one);    //   public/postimages/123123.jpg
+                $data['logo']='public/ads/'.$image_one;   //   public/postimages/123123.jpg
+                 DB::table('settings')->where('id',$id) ->update($data);
+                 $notification=array(
+                     'messege'=>'Successfully Settings Updated ',
+                     'alert-type'=>'success'
+                    );
+            return Redirect()->back()->with($notification);
+           }
+            //jodi image na thake notun vabe
+           // $data['image']= $oldimage;
+             DB::table('settings')->where('id',$id) ->update($data);
+                 $notification=array(
+                     'messege'=>'Successfully Settings Updated ',
+                     'alert-type'=>'success'
+                    );
+            return Redirect()->back()->with($notification);
     }
 
 }
